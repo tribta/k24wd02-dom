@@ -24,35 +24,49 @@
 // input.checked = false;
 
 // LESSON: Generate a table by event:
-function generateTable() {
-  const tbl = document.createElement("table");
-  //   tbl = <table></table>
-  const tblBody = document.createElement("tbody");
-  //   tblBody = <tbody></tbody>
+// function generateTable() {
+//   const tbl = document.createElement("table");
+//   //   tbl = <table></table>
+//   const tblBody = document.createElement("tbody");
+//   //   tblBody = <tbody></tbody>
 
-  // create cells [...]
-  for (let i = 0; i < 2; i++) {
-    const row = document.createElement("tr");
-    //   row = <tr></tr>
-    for (let j = 0; j < 2; j++) {
-      const cell = document.createElement("td");
-      //   cell = <td></td>
-      const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
-      cell.appendChild(cellText);
-      //   <tr><td>cell in row ${i}, column ${j}</td></tr>
-      row.appendChild(cell);
-      //   <tr><td></td></tr>
-    }
-    tblBody.appendChild(row);
-    //<tbody><tr><td></td></tr></tbody>
-  }
-  tbl.appendChild(tblBody);
-  // <table><tbody><tr><td></td></tr></tbody></table>
+//   // create cells [...]
+//   for (let i = 0; i < 2; i++) {
+//     const row = document.createElement("tr");
+//     //   row = <tr></tr>
+//     for (let j = 0; j < 2; j++) {
+//       const cell = document.createElement("td");
+//       //   cell = <td></td>
+//       const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
+//       cell.appendChild(cellText);
+//       //   <tr><td>cell in row ${i}, column ${j}</td></tr>
+//       row.appendChild(cell);
+//       //   <tr><td></td></tr>
+//     }
+//     tblBody.appendChild(row);
+//     //<tbody><tr><td></td></tr></tbody>
+//   }
+//   tbl.appendChild(tblBody);
+//   // <table><tbody><tr><td></td></tr></tbody></table>
 
-  document.body.appendChild(tbl);
-  // <body><table><tbody><tr><td></td></tr></tbody></table></body>
+//   document.body.appendChild(tbl);
+//   // <body><table><tbody><tr><td></td></tr></tbody></table></body>
 
-  tbl.setAttribute("border", "2");
-}
+//   tbl.setAttribute("border", "2");
+// }
 
-document.querySelector("input").addEventListener("click", generateTable);
+// document.querySelector("input").addEventListener("click", generateTable);
+
+// LESSON: Edit Attribute Style:
+// function setBackGround() {
+//   const p = document.getElementsByTagName("p");
+
+//   const secondParagraph = p[1];
+
+//   secondParagraph.style.background = "red";
+// }
+
+// document.querySelector("input").addEventListener("click", setBackGround);
+
+// LESSON: Button Random Color by RGB(random(),random(),random())
+// sử dụng Math.random();
