@@ -1,85 +1,58 @@
-/**
- * ==============================
- * LESSON: DOM
- * ==============================
- * 1.Kế thừa
- * ==============================
- */
+// document.querySelector("input").addEventListener("click", () => {
+//   const header = document.getElementsByTagName("h1").item(0);
+//   header.firstChild.data = "Updated The Header!!!";
 
-// document --> HTMLDocument --> Document --> Node
-// --> EvenTarget --> Object.Prototype --> null
+//   // truy cập vào paragraph
+//   const p = document.getElementsByTagName("p").item(0);
+//   p.firstChild.data = "This is the 1st paragraph.";
 
-// div --> HTMLDivElement --> HTMLElement --> Element Node
-// --> EvenTarget --> Object.Prototype --> null
+//   const newText = document.createTextNode("This is the 2nd paragraph.");
+//   const newElement = document.createElement("p");
+//   newElement.appendChild(newText);
+//   // <p>This is the 2nd paragraph.</p>
+//   p.parentNode.appendChild(newElement);
+// });
 
-// LESSON: querySelectorAll("");
-// tìm kiếm và trả về danh sách elements.
+// LESSON: getter & setter place holder attr:
+// const input = document.querySelector("input");
+// let attr = input.placeholder;
+// input.placeholder = "Update PlaceHolder";
 
-const p = document.querySelectorAll("p");
-// trả về danh sách NodeList chứa element
+// LESSON: getter & setter checkbox attribute:
+// const input = document.querySelector("input");
+// let attr = input.checked;
+// input.checked = false;
 
-// alert(p[0].nodeName);
-for (const element of p) {
-  console.log(element.nodeName);
+// LESSON: Generate a table by event:
+function generateTable() {
+  const tbl = document.createElement("table");
+  //   tbl = <table></table>
+  const tblBody = document.createElement("tbody");
+  //   tblBody = <tbody></tbody>
+
+  // create cells [...]
+  for (let i = 0; i < 2; i++) {
+    const row = document.createElement("tr");
+    //   row = <tr></tr>
+    for (let j = 0; j < 2; j++) {
+      const cell = document.createElement("td");
+      //   cell = <td></td>
+      const cellText = document.createTextNode(`cell in row ${i}, column ${j}`);
+      cell.appendChild(cellText);
+      //   <tr><td>cell in row ${i}, column ${j}</td></tr>
+      row.appendChild(cell);
+      //   <tr><td></td></tr>
+    }
+    tblBody.appendChild(row);
+    //<tbody><tr><td></td></tr></tbody>
+  }
+  tbl.appendChild(tblBody);
+  // <table><tbody><tr><td></td></tr></tbody></table>
+
+  document.body.appendChild(tbl);
+  // <body><table><tbody><tr><td></td></tr></tbody></table></body>
+
+  tbl.setAttribute("border", "2");
 }
 
-console.log(p instanceof NodeList); // true
-
-// NOTE: sử dụng sự kiện (event) onload:
-// sẽ tải function mỗi khi loading finished
-window.onload = () => {
-  const heading = document.createElement("h1");
-  // <h1></h1>
-  const headingText = document.createTextNode("My First Time Access DOM.");
-  // My First Time Access DOM.
-  heading.appendChild(headingText);
-  // <h1>My First Time Access DOM.</h1>
-  document.body.appendChild(heading);
-  // <body><h1>My First Time Access DOM.</h1></body>
-};
-
-// LESSON: Attribute bên trong Element
-const table = document.getElementById("table");
-// table = <table>
-const tableAttr = table.attributes;
-// NamedNodeMap {0: id, 1: border, id: id, border: border, length: 2}
-for (const attr of tableAttr) {
-  attr.nodeName.toLowerCase() === "border"
-    ? (table.border = "10")
-    : "not found";
-}
-
-// LESSON: thay đổi giá trị bên trong Element input
-const story = document.body.querySelector(".story");
-// story = <textArea>
-const setText = document.body.querySelector("#set-text");
-// setText = <button>
-setText.addEventListener("click", () => {
-  story.textContent =
-    "It was dark. Lets go back home and play 'The Last Of Us 2'.";
-});
-
-const clearText = document.body.querySelector("#clear-text");
-clearText.addEventListener("click", () => {
-  story.textContent = "";
-});
-
-// LESSON: chèn element child --> element parent
-const parent = document.body.querySelector(".parent");
-
-// nút add child
-const addChild = document.body.querySelector("#add-child");
-addChild.addEventListener("click", () => {
-  // đây là nơi khai báo cái element child
-  const child = document.createElement("div");
-  child.classList.add("child");
-  child.textContent = "not now!"
-  parent.appendChild(child);
-});
-
-// nút remove child
-const removeChild = document.body.querySelector("#remove-child");
-removeChild.addEventListener("click", () => {
-  const child = document.body.querySelector(".child");
-  parent.removeChild(child);
-});
+document.querySelector("input").addEventListener("click", generateTable);
