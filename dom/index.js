@@ -70,3 +70,17 @@
 
 // LESSON: Button Random Color by RGB(random(),random(),random())
 // sử dụng Math.random();
+const btn = document.querySelector("button");
+
+function random(number) {
+  return Math.floor(Math.random() * (number + 1));
+  // Math.random() = 0 * 255 = 0
+  // Math.random() = 1 * 255 = 255
+  // Math.random() = 0.999999999999999 * 255 = 255
+  // 254.9999999999999
+}
+
+btn.addEventListener("click", () => {
+  const rgbColor = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+  document.body.style.backgroundColor = rgbColor;
+});
