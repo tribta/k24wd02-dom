@@ -48,3 +48,38 @@ for (const attr of tableAttr) {
     ? (table.border = "10")
     : "not found";
 }
+
+// LESSON: thay đổi giá trị bên trong Element input
+const story = document.body.querySelector(".story");
+// story = <textArea>
+const setText = document.body.querySelector("#set-text");
+// setText = <button>
+setText.addEventListener("click", () => {
+  story.textContent =
+    "It was dark. Lets go back home and play 'The Last Of Us 2'.";
+});
+
+const clearText = document.body.querySelector("#clear-text");
+clearText.addEventListener("click", () => {
+  story.textContent = "";
+});
+
+// LESSON: chèn element child --> element parent
+const parent = document.body.querySelector(".parent");
+
+// nút add child
+const addChild = document.body.querySelector("#add-child");
+addChild.addEventListener("click", () => {
+  // đây là nơi khai báo cái element child
+  const child = document.createElement("div");
+  child.classList.add("child");
+  child.textContent = "not now!"
+  parent.appendChild(child);
+});
+
+// nút remove child
+const removeChild = document.body.querySelector("#remove-child");
+removeChild.addEventListener("click", () => {
+  const child = document.body.querySelector(".child");
+  parent.removeChild(child);
+});
